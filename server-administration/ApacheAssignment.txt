@@ -1,0 +1,14 @@
+1.) Install apache web server on your system
+2.) Host a particaluar directory in you system using apache
+3.) Enable authenticatio & authorization in the apache server
+4.) Create a per user web directories
+i.e http://localhost/sandy should server content from /home/sandy/www
+http://localhost/shankar should server content from /home/shankar/www
+http://localhost/rahul should server content from /home/rahul/www
+5.) Setup SSL on apache web server
+6.) Create 2 virtual host that will listen on port 8080 & 8090 and server the content from corresponding directory
+i.e
+http://localhost:8080 should server content from /home/sandy/www
+http://localhost:8090 should server content from /home/shankar/www
+
+
