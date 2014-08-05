@@ -1,0 +1,3 @@
+Create a shell script to find processes that are running more then a stipulated amount of time and finally kill those proceses
+
+i.e find all the processes that have been running for more then 10 minutes and kill them
