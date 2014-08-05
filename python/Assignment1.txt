@@ -1,0 +1,25 @@
+Create a python script that will read a csv file
+parent folder, child folder, file name
+
+move the files according to these parameters to the target directory
+
+Input for the progaram
+- Source folder name
+- Target folder name
+- Path of csv file
+
+i.e
+source folder => /home/sandy/src
+target folder => /home/sandy/target
+Path of csv file => /home/sandy/files.lst
+
+Sample content of files.lst
+10109,17578,DLFE-1.pdf
+10109,17578,DLFE-2.pdf
+10109,175721,DLFE-5702.pdf
+10109,175721,DLFE-5402.pdf
+
+Consider all boundary conditions such as:
+1.) Target folder doesn't exists
+2.) Source file doesn't exist
+3.) Log all major operations
