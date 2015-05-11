@@ -1,0 +1,32 @@
+#!/bin/bash
+echo -n "directoryname"
+read dirname
+echo "$dirname"
+if [ ! -d "$dirname" ]
+then
+    echo "dir doesn't exist."
+
+exit 0
+
+else
+
+    echo "dir exists"
+
+fi
+echo -n "pattern"
+read pattern
+echo "$pattern"
+if [ -f $dirname/$pattern ];
+then
+        echo "file $pattern exist"
+else
+        echo "file $pattern doesnt exist"
+exit 0
+fi
+
+find . -type f -name "*txt"
+
+
+
+
+
