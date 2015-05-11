@@ -6,25 +6,25 @@
 echo -n "Enter directory name < "
 read DIRNAME
 
-echo "$dirname"
-if [ ! -d "$dirname" ]
+echo "$DIRNAME"
+if [ ! -d "$DIRNAME" ]
 then
     echo "dir doesn't exist. Creating now"
-    mkdir ./$dirname
+    mkdir ./$DIRNAME
     echo "dir created"
 else
     echo "dir exists"
 fi
 
 echo -n "enter file name < "
-read filename
-echo "$filename"
+read FILENAME
+echo "$FILENAME"
 
-if [ -f $dirname/$filename ];
+if [ -f $DIRNAME/$FILENAME ];
 then 
-	echo "file $filename exist"
+	echo "file $FILENAME exist"
 else 
-	echo "file $filename doesnt exist"
-	touch $dirname/$filename
+	echo "file $FILENAME doesnt exist"
+	touch $DIRNAME/$FILENAME
 	echo "file created < "
 fi
