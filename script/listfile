@@ -1,0 +1,19 @@
+#!/bin/bash
+echo -n "directoryname :"
+read dirname
+echo "$dirname"
+if [ ! -d "$dirname" ]
+then
+    echo "dir doesn't exist."
+    exit 0
+else
+    echo "dir exists"
+fi
+
+echo -n "patternname"
+read patternname
+echo "$patternname"
+       
+ls listallfile| grep -E "$patternname"
+
+
