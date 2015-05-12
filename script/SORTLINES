@@ -15,52 +15,50 @@ function sort_disp(){
 }
 #FUCNTION FOR LINE CHECK ENTERED BY USER 
 function check_lines(){
-   filename=$1
-   requested_lines=$2
-   Lines=`wc -l $filename | awk '{ print $1 }'`
-   if [ "$requested_lines" -gt "$Lines" ]
+   FILENAME=$1
+   echo -n "how many lines you want in descending order "
+   read N
+   Lines=`wc -l $FILENAME | awk '{ print $1 }'`
+   if [ "$N" -gt "$Lines" ]
    then
       echo "you entered more than available lines!!"
       echo "displaying available lines in descending order"
-      sort_disp $filename $Lines
+      sort_disp $FILENAME $Lines
    else
-      sort_disp $filename $requested_lines
+      sort_disp $FILENAME $N
    fi
+}
+#FUNCTION FOR INSERTING LINES
+function insert_line(){
+FILENAME=$1
+while true;
+do
+        echo "enter the line"
+        read data
+        if [ $data == "exit" ]; then
+                break
+        fi
+        echo $data >> $FILENAME
+
+done
 }
 
 echo -n "enter file name you want to create "
-read filename
-if [ -f "$filename" ]; then
+read FILENAME
+if [ -f "$FILENAME" ]; then
   echo "file already exist"
-  echo  "how many lines you want in descending order"
-  read N
-  echo "data in descending order is"
- 
 #FUNCTION CALL
-  check_lines $filename $N
+  check_lines $FILENAME
 else
   echo "file $file does not exist. creating now"
-  touch $filename
+  touch $FILENAME
   
   echo  "file created"
   echo "TO EXIT FROM LOOP TYPE EXIT"
-#LOOP FOR INSERTING LINES FROM USER  
-while true; 
-  do 
-	echo "enter the line"
-	read data
-	if [ $data == "exit" ]; then
-	 	break 	
-	fi
-	echo $data >> $filename 
 
-  done
-  
+  insert_line $FILENAME
+
 # TO DISPLAY THE LINES IN DESCENDING ORDER
-  echo -n "how many lines you want in descending order "
-  read N
-  echo "data in descending order is"
 #FUNCTION CALL 
-  sort_disp $filename $N
-  
+  check_lines $FILENAME
 fi
