@@ -15,5 +15,5 @@ if [ ! -d $DIRNAME ]
       echo -n "enter SIZEOFFILE :"
       read SIZEOFFILE
       echo "The files with their name and size :"
-      ls -al $DIRNAME|tail --line=+4|awk -v sof=$SIZEOFFILE '{ if ($5 > sof )  print  $5,"\t"$9}'
+      ls -al $DIRNAME| egrep -v '^d'|tail --line=+2|awk -v sof=$SIZEOFFILE '{ if ($5 > sof )  print  $5,"\t"$9}'
 fi
