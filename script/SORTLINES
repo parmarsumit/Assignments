@@ -1,0 +1,66 @@
+#Print the top N lines after sorting the content of file in Descending order...
+
+# creating a txt file
+#inserting n lines in the txt file
+#sorting lines in descending order & display top n lines
+
+#!/bin/bash
+
+#FUCNTION FOR SORTING AND DISPLAY LINE IN DESCENDING ORDER
+function sort_disp(){
+  FILENAME=$1
+  NO_OF_LINE=$2
+  sort -n -r $FILENAME | head -n $NO_OF_LINE
+
+}
+#FUCNTION FOR LINE CHECK ENTERED BY USER 
+function check_lines(){
+   filename=$1
+   requested_lines=$2
+   Lines=`wc -l $filename | awk '{ print $1 }'`
+   if [ "$requested_lines" -gt "$Lines" ]
+   then
+      echo "you entered more than available lines!!"
+      echo "displaying available lines in descending order"
+      sort_disp $filename $Lines
+   else
+      sort_disp $filename $requested_lines
+   fi
+}
+
+echo -n "enter file name you want to create "
+read filename
+if [ -f "$filename" ]; then
+  echo "file already exist"
+  echo  "how many lines you want in descending order"
+  read N
+  echo "data in descending order is"
+ 
+#FUNCTION CALL
+  check_lines $filename $N
+else
+  echo "file $file does not exist. creating now"
+  touch $filename
+  
+  echo  "file created"
+  echo "TO EXIT FROM LOOP TYPE EXIT"
+#LOOP FOR INSERTING LINES FROM USER  
+while true; 
+  do 
+	echo "enter the line"
+	read data
+	if [ $data == "exit" ]; then
+	 	break 	
+	fi
+	echo $data >> $filename 
+
+  done
+  
+# TO DISPLAY THE LINES IN DESCENDING ORDER
+  echo -n "how many lines you want in descending order "
+  read N
+  echo "data in descending order is"
+#FUNCTION CALL 
+  sort_disp $filename $N
+  
+fi
