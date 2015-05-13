@@ -6,10 +6,10 @@
 #!/bin/bash
 check_lines() #function to check file name
 {
-flnm=$1  #variable to pass FILENAME
+fileNAME=$1  #variable to pass FILENAME
 line=$2  #variable to pass line number N
 
-lines=`wc -l $flnm | awk '{ print $1 }'` 
+lines=`wc -l $fileNAME | awk '{ print $1 }'` 
 
 if [ "$line" -gt "$lines" ]
 then  
