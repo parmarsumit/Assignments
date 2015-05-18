@@ -1,0 +1,16 @@
+#Return the list of all files with name and their size in a directory
+#Enter directory name from user
+#Check its existance
+#ls command pipelined with egrep & awk to display only filename and its size
+#Display nothing if directory do not exist
+ 
+#!/bin/bash
+echo -n "ENTER DIRECTORY NAME :"
+read DIRNAME
+if [ ! -d $DIRNAME ]
+then 
+      echo "DIRECTORY DOES NOT EXIST "
+else 
+      echo "DIRECTORY EXIST"
+      ls -al $DIRNAME| egrep -v '^d'|tail -n +2|awk '{print  $5,"\t"$9}'
+fi 
