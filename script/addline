@@ -1,0 +1,24 @@
+#Add a line if not already present in the file.
+#File name is entered by the user 
+#If filee exist then line is entered by user that is to be inserted
+#Then using grep line entered is check and if line is not present then its inserted using sed else not inserted
+#Displays nothing if file nott present
+
+#!/bin/bash
+echo "ENTER FILENAME"
+read FILENAME
+if [ -f $FILENAME ]
+then 
+     echo "FILE EXIST"
+     echo "ENTER LINE TO BE INSERTED"
+     read LINE
+if grep -Fxq "$LINE" $FILENAME  
+then 
+     echo "LINE ALREADY EXIST"
+else 
+     sed -i "\$a $LINE" $FILENAME
+     echo "LINE IS INSERTED"
+fi
+else 
+     echo "FILE DOES NOT EXIST"
+fi
