@@ -1,0 +1,19 @@
+#Return the list of all files with name and their size in a directory with a filter of minimum file size i.e get list of files having size more then 1MB
+#Directory check if exist then size of file is entered by the user
+#if not then displays nothing
+#condition statement with awk is used which displays the relative files of size entered by user
+
+#!/bin/bash
+echo -n "ENTER DIRECTORY NAME :"
+read DIRNAME
+if [ ! -d $DIRNAME ]
+then
+      echo "DIRECTORY DOES NOT EXIST"
+      exit 0
+else
+      echo "DIRECTORY EXIST"
+      echo -n "ENTER SIZEOFFILE :"
+      read SIZEOFFILE
+      ls -al $DIRNAME| egrep -v '^d'|tail --line=+2|awk -v sof=$SIZEOFFILE '{ if ($5 > sof )  print  $5,"\t"$9 }'
+fi
+
