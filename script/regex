@@ -1,0 +1,22 @@
+#Print the line number's in the file matching a regex
+#Enter the file in which pattern is to be searched
+#check file existence
+#If file exist then match the pattern in that file
+#awk command which shows line number and pattern entered
+#Displays nothing if pattern doesnt match
+#Exit loop if file doesnt exist
+
+
+#!/bin/bash
+echo -n "ENTER FILENAME :"
+read FILENAME
+if [ -f $FILENAME ]
+then
+  echo "FILE EXIST"
+  echo -n "ENTER PATTERN TO BE SEARCHED :"
+  read PATTERN
+  grep 'PATTERN' $FILENAME
+  awk  "/$PATTERN/{print NR\"\t\" \$0 }" $FILENAME
+else
+  echo -n "FILE DOES NOT EXIST"
+fi
