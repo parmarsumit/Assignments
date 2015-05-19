@@ -1,0 +1,19 @@
+#!/bin/bash
+#Sync the content from source folder to target folder
+echo "ENTER SOURCE FOLDER"
+read SOURCEFOLDER
+if [ -d $SOURCEFOLDER ]
+then
+     echo "FOLDER EXIST"
+     echo "ENTER DESTINATION FOLDER"
+     read DESTINATIONFOLDER
+if [ -d $DESTINATIONFOLDER ]
+then
+     rsync -rv $SOURCEFOLDER/ $DESTINATIONFOLDER
+     echo "CONTENT IS SYNCED"
+else 
+echo "FOLDER DOES NOT EXIST"
+fi
+else
+    echo "FOLDER DOES NOT EXIST"
+fi
