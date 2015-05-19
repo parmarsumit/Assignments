@@ -1,0 +1,12 @@
+#!/bin/bash
+#Remove a directory
+echo "ENTER DIRECTORY NAME TO BE REMOVED"
+read DIRECTORY
+if [ -d $DIRECTORY ]
+then
+   rm -r $DIRECTORY
+   echo "DIRECTORY IS REMOVED"
+else
+   echo "NO SUCH DIRECTORY"
+fi
+
