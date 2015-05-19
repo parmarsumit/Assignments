@@ -1,0 +1,11 @@
+#!/bin/bash
+#create a directory
+echo "ENTER DIRECTORY NAME YOU WANT TO CREATE"
+read DIR_NAME
+if [ -d $DIR_NAME ]
+then
+   echo "DIRECTORY ALREADY EXIST"
+else
+   mkdir $DIR_NAME  
+   echo "DIRECTORY CREATED"
+fi
