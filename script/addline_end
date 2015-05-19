@@ -1,0 +1,16 @@
+#!/bin/bash
+ 
+#Add a line at the end of file
+
+echo "ENTER FILENAME"
+read FILENAME
+if [ -f $FILENAME ]
+then
+   echo "FILE EXIST"
+   echo "ENTER LINE YOU WANT TO ADD"
+   read LINE 
+   echo "$LINE" >> $FILENAME             #WRITE THE LINE ENTERED BY USER IN THE RESPECTIVE FILE
+   echo "LINE IS ADDED"
+else
+   echo "FILE NOT FOUND"
+fi
