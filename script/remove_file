@@ -1,0 +1,11 @@
+#!/bin/bash
+#remove a file
+echo "ENTER FILENAME TO BE REMOVED"
+read FILENAME
+if [ -f $FILENAME ]
+then
+   rm $FILENAME
+   echo "FILE IS REMOVED"
+else
+   echo "FILE DOES NOT EXIST"
+fi
