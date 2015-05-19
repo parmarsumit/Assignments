@@ -1,0 +1,10 @@
+#!/bin/bash
+#Check existance of a directory
+echo "ENTER DDIRECTORY NAME"
+read DIRECTORY
+if [ -d $DIRECTORY ]
+then
+   echo "DIRECTORY EXIST"
+else
+   echo "DIRECTORY DOES NOT EXIST"
+fi
