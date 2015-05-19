@@ -1,0 +1,21 @@
+#!/bin/bash
+echo "ENTER FILENAME"
+read FILENAME
+if [ -f $FILENAME ]
+then
+   echo "FILE EXIST"
+   echo "ENTER THE LINE TO BE INSERTED"
+   read LINE
+   echo  "ENTER THE POSITION WHERE YOU WANT TO INSERT LINE"
+   read POSITION
+   LINES=`wc -l $FILENAME | awk '{ print $1 }'`
+if [ $POSITION -gt $LINES ]
+then
+     echo "POSITION NOT AVAILABLE"
+else
+       sed -i "${POSITION}i$LINE" $FILENAME
+       echo "INSERTION SUCCESSFUL "
+fi
+else
+       echo "FILE DOES NOT EXIST"
+fi
