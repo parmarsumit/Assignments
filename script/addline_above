@@ -1,0 +1,24 @@
+#!/bin/bash
+#Add a line above the line number
+echo "ENTER FILENAME"
+read FILENAME
+if [ -f $FILENAME ]
+then
+   echo "FILE EXIST"
+   echo "ENTER THE LINE TO BE INSERTED"
+   read LINE
+   echo "ENTER THE POSITION ABOVE WHICH YOU WANT THE LINE"
+   read POSITION
+lines=`wc -l $FILENAME | awk '{ print $1 }'`
+if [ "$POSITION" -gt "$lines" ]
+then
+   echo "THERE IS NO SUCH POSITION"
+else
+   sed -i "${POSITION}i$LINE" $FILENAME
+   echo "THE LINE IS INSERTED ABOVE THE POSITION YOU HAVE ENTERED"
+fi
+else
+   echo "FILE DOES NOT EXIST"
+fi
+
+
