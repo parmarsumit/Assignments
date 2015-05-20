@@ -1,0 +1,30 @@
+#!/bin/bash
+#Get the word at a specified position and line number
+echo "ENTER FILENAME"
+read FILENAME
+if [ -f $FILENAME ]
+then
+   echo "FILE EXIST"
+   echo "ENTER THE LINE NUMBER "
+   read LINE
+   lines=`wc -l $FILENAME | awk '{ print $1 }'` 
+if [ "$LINE" -gt "$lines" ]
+then  
+   echo "THE LINE YOU ENTERED IS NOT AVAILABLE"
+else
+   echo "ENTER THE POSITION OF WORD YOU WANT TO SEE"
+   read POSITION 
+   words=`head "-$LINE" $FILENAME | tail -1 | wc -w` 
+if [ "$POSITION" -gt "$words" ]
+then 
+   echo "NO SUCH POSITION"
+   exit 0 
+else
+   echo "THE WORD IS= "
+   head "-$LINE" $FILENAME | tail -1 | awk -v pos=$POSITION '{print $pos}'
+fi
+fi
+else
+   echo "FILE DOES NOT EXIST"
+fi
+
