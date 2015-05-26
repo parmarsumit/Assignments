@@ -1,0 +1,28 @@
+#!/bin/bash
+#create a script to create 1GB file till you dont get disk out of space and then fix it
+ 
+echo "FREE DISC SPACE"
+space=`df -a |awk 'NR==2{print$4}'`#check the free space available on disk
+echo "$space"
+while :
+do
+if [ "$space" -ne "0" ]
+then
+fallocate -l 1G ${RANDOM}.txt      #creates file of size one GB
+space=`df -a |awk 'NR==2{print$4}'`
+echo $space
+else
+echo "DISC FULL"
+space=`df -a |awk 'NR==2{print$4}'`
+echo "$space"
+break
+fi
+done
+find -name "*.txt" -size 1G -delete #Delete file with extention .txt of size 1GB
+echo "SPACE CREATED"
+echo "AVAILABLE SPACE"
+space=`df -a |awk 'NR==2{print$4}'`
+echo "$space"
+
+
+
