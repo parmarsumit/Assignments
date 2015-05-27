@@ -10,8 +10,8 @@ space_disc
 echo "$space"
 while :
 do
-  if [ "$space" -ne "0" ]
-  then
+if [ "$space" -ne "0" ]
+then
     fallocate -l 1K ${RANDOM}.txt      #creates file of size one KB
     space_disc
     echo $space
